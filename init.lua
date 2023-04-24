@@ -21,8 +21,17 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Custom Start screen
-require('start_screen')
+
+-- Get the absolute path to the init.lua file
+local init_path = debug.getinfo(1, "S").source:sub(2)
+
+-- Get the directory containing init.lua
+local init_dir = init_path:match("(.*/)") or ""
+
+-- Add the init.lua directory to the Lua package path
+package.path = init_dir .. "?.lua;" .. package.path
+
+require("start_screen")
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -240,8 +249,6 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ My Custom keymaps ]]
--- Toogle NeoTree
--- vim.keymap.set('n', '<leader>n', require('neo-tree'), { silent = true })
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true })
 
