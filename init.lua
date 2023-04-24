@@ -21,7 +21,6 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 -- Get the absolute path to the init.lua file
 local init_path = debug.getinfo(1, "S").source:sub(2)
 
@@ -249,8 +248,15 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ My Custom keymaps ]]
+-- TP Plugins
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true })
+
+-- Split panes keymaps
+vim.keymap.set('n', '<Leader>Q', ':close<CR>', { noremap = true, silent = true })
+
+-- Save file
+vim.keymap.set('n', '<C-s>', ':w<CR>', { silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

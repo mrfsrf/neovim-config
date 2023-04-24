@@ -42,8 +42,7 @@ function M.start_screen()
   vim.api.nvim_command("setlocal nomodified")
 
   -- Add key mapping for "i" to create new file
-  vim.api.nvim_buf_set_keymap(0, "i", "<CR>", "<ESC>:enew<CR>", {noremap = true, silent = true})
-
+  vim.api.nvim_buf_set_keymap(0, "n", "i", ":enew<CR>i", { noremap = true, silent = true })
 end -- /end .start_screen func
 
 -- Automatically call the start_screen function if no file is given
