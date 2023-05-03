@@ -104,25 +104,45 @@ require('lazy').setup({
   },
 
   { -- Theme inspired by Atom
-     'navarasu/onedark.nvim',
-    -- Looks like mine doesn't work.
-    -- style = 'warm',
-    -- transparent = true,
-    -- toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
-    -- toggle_style_key = '<leader>ts',
+     'ellisonleao/gruvbox.nvim',
      priority = 1000,
-     config = function()
-       vim.cmd.colorscheme 'onedark'
-     end,
+      config = function()
+        local gruvbox = require('gruvbox')
+        gruvbox.setup({
+          strikethrough = true,
+          invert_selection = false,
+          invert_signs = false,
+          invert_tabline = false,
+          invert_intend_guides = false,
+          inverse = true, -- invert background for search, diffs, statuslines and errors
+          contrast = "hard", -- can be "hard", "soft" or empty string
+          palette_overrides = {},
+          overrides = {},
+          dim_inactive = false,
+          transparent_mode = true,
+          transparent = true,
+        })
+        vim.cmd.colorscheme 'gruvbox'
+        vim.o.background = 'dark'
+        vim.cmd('highlight Cursor guifg=#EBDBB4')
+    end,
   },
 
- -- { 
-    -- "catppuccin/nvim", 
-    -- name = "catppuccin",
-    -- config = function()
-     -- vim.cmd.colorscheme 'catppuccin' 
-    -- end
-  -- },
+  { -- Theme inspired by Atom
+     'navarasu/onedark.nvim',
+     priority = 1000,
+      config = function()
+        -- vim.cmd.colorscheme 'onedark'
+        local onedark = require('onedark')
+        onedark.setup({
+          style = 'cool',
+          ending_tildes = true,
+          transparent = true,
+          toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
+          toggle_style_key = '<leader>ts',
+        })
+      end,
+  },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -248,6 +268,9 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ My Custom keymaps ]]
+-- Nvim-tree
+--[[ vim.api.nvim_set_keymap('n', '<leader>F', ':NvimTreeToggle<CR>', { noremap = true, silent = true }) ]]
+
 -- TP Plugins
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true })
@@ -298,6 +321,7 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>rf', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecent files' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -407,7 +431,7 @@ local on_attach = function(_, bufnr)
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  nmap('gd', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
   nmap('<leader>wl', function()
