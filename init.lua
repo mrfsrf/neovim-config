@@ -115,7 +115,7 @@ require('lazy').setup({
           invert_tabline = false,
           invert_intend_guides = false,
           inverse = true, -- invert background for search, diffs, statuslines and errors
-          contrast = "hard", -- can be "hard", "soft" or empty string
+          contrast = "soft", -- can be "hard", "soft" or empty string
           palette_overrides = {},
           overrides = {},
           dim_inactive = false,
@@ -150,7 +150,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
@@ -257,7 +257,38 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Basic Keymaps ]]
+-- [[ Terminal setup ]]
+local terminal_toggle = 0
+
+function _G.toggle_terminal()
+  if terminal_toggle == 0 then
+    vim.cmd("botright split term://" .. vim.env.SHELL)
+    vim.cmd("set nobuflisted")
+    vim.cmd("set nornu")
+    vim.cmd("set nonu")
+    terminal_toggle = 1
+  else
+    vim.cmd("close")
+    terminal_toggle = 0
+  end
+  -- Ensure that the terminal buffer is in focus
+  vim.cmd("startinsert")
+end
+--
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+vim.keymap.set('n', '<leader>t', ':lua _G.toggle_terminal()<CR>', { noremap = true, silent = true })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -276,6 +307,16 @@ vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true })
 
 -- Split panes keymaps
+vim.keymap.set('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>h', ':split<CR>', { noremap = true, silent = true })
+
+-- Navigate trough split panes
+-- vim.keymap.set('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
+
+-- Close
 vim.keymap.set('n', '<Leader>Q', ':close<CR>', { noremap = true, silent = true })
 
 -- Save file
@@ -325,6 +366,8 @@ vim.keymap.set('n', '<leader>rf', require('telescope.builtin').oldfiles, { desc 
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- builtin.lsp_references({opts})
+vim.keymap.set('n', '<leader>sl', require('telescope.builtin').lsp_references, { desc = '[S]earch [LSP]lsp_document_symbols' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
