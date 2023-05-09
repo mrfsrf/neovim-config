@@ -1,7 +1,3 @@
-require("core.settings")
-require("core.keymaps")
-require("start_screen")
-
 -- Get the absolute path to the init.lua file
 local init_path = debug.getinfo(1, "S").source:sub(2)
 
@@ -10,6 +6,10 @@ local init_dir = init_path:match("(.*/)") or ""
 
 -- Add the init.lua directory to the Lua package path
 package.path = init_dir .. "?.lua;" .. package.path
+
+require("core.settings")
+require("core.keymaps")
+require("start_screen")
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
