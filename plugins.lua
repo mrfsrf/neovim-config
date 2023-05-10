@@ -35,6 +35,12 @@ require("lazy").setup({
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
 
+  {
+    -- Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
+    -- The plugin provides mappings to easily delete, change and add such surroundings in pairs
+    "tpope/vim-surround",
+  },
+
   -- Useful plugin to show you pending keybinds.
   { "folke/which-key.nvim", opts = {} },
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -49,6 +55,17 @@ require("lazy").setup({
         changedelete = { text = "~" },
       },
     },
+  },
+
+  {
+    -- A floating input
+    -- https://github.com/VonHeikemen/fine-cmdline.nvim
+    'VonHeikemen/fine-cmdline.nvim',
+    config = function()
+      requires = {
+        {'MunifTanjim/nui.nvim'}
+      }
+    end
   },
 
   { -- Theme inspired by Atom
@@ -76,22 +93,6 @@ require("lazy").setup({
     end,
   },
 
-  --[[ { -- Theme inspired by Atom
-    "navarasu/onedark.nvim",
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme 'onedark'
-      local onedark = require("onedark")
-      onedark.setup({
-        style = "cool",
-        ending_tildes = true,
-        transparent = true,
-        toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
-        toggle_style_key = "<leader>ts",
-      })
-    end,
-  }, ]]
-
   { -- Set lualine as statusline
     "nvim-lualine/lualine.nvim",
     -- See `:help lualine.txt`
@@ -117,9 +118,10 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    main = "ibl",
     opts = {
-      char = "┊",
-      show_trailing_blankline_indent = false,
+      -- char = "┊",
+      -- show_trailing_blankline_indent = false,
     },
   },
 

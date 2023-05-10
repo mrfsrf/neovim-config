@@ -19,6 +19,7 @@ function M.start_screen()
                                                                             
     Welcome to Neovim!
     To open a file, use :e <filename>
+    or press `i` in normal mode
     To create a new file, use :enew
     For help, use :help
 
