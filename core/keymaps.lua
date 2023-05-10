@@ -10,6 +10,10 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>h", ":split<CR>", { noremap = true, silent = true })
 
+-- Navigate trough open buffers
+vim.api.nvim_set_keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
+
 -- Close
 vim.keymap.set("n", "<Leader>Q", ":close<CR>", { noremap = true, silent = true })
 
