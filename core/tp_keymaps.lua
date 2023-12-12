@@ -4,8 +4,8 @@ vim.keymap.set("n", "<leader>m", ":Mason<CR>", { silent = true })
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
 
 -- Github Copilot keymaps
-vim.keymap.set("n", "<C-c>", "<Plug>(Copilot-n)", {})
-vim.keymap.set("x", "<C-c>", "<Plug>(Copilot-x)", {})
+-- vim.keymap.set("n", "<C-c>", "<Plug>(Copilot-n)", {})
+-- vim.keymap.set("x", "<C-c>", "<Plug>(Copilot-x)", {})
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
@@ -33,4 +33,5 @@ vim.keymap.set(
 	{ desc = "[S]earch [LSP]lsp_document_symbols" }
 )
 
+-- Harpon
 
