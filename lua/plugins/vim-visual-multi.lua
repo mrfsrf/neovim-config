@@ -1,3 +1,5 @@
 return {
-  { 'mg979/vim-visual-multi', version = "*" }
+  { 'mg979/vim-visual-multi', 
+    version = "*",
+    lazy = false }
 }

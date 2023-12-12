@@ -22,6 +22,10 @@ vim.keymap.set("n", "<Leader>Q", ":close<CR>", { noremap = true, silent = true }
 -- Save file
 vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
 
+-- Move line up/down
+vim.keymap.set("n", "<A-Up>", ":m-2<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-Down>", ":m+<CR>", { noremap = true, silent = true })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
@@ -61,3 +65,5 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 vim.keymap.set("n", "<leader>t", ":lua _G.toggle_terminal()<CR>", { noremap = true, silent = true })
 
+-- run python scripts
+vim.keymap.set("n", "<leader>!", ":!python3 %<CR>", { noremap = true, silent = true })
