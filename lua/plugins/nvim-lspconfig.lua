@@ -1,5 +1,3 @@
---  The configuration is done below. Search for lspconfig to find it below.
--- NOTE: This is where your plugins related to LSP can be installed.
 return {
   -- LSP Configuration & Plugins
   "neovim/nvim-lspconfig",

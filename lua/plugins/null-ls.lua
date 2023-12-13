@@ -11,7 +11,7 @@ return {
     local completion = null_ls.builtins.completion
     return {
       on_attach = function(_, bufnr)
-        vim.keymap.set({ 'n', 'v' }, '<leader>Y', function()
+        vim.keymap.set({ 'n', 'v' }, '<leader>F', function()
           vim.lsp.buf.format({
             async = true,
             timeout = 2000,
@@ -25,7 +25,7 @@ return {
         formatting.autopep8,
         formatting.eslint,
         formatting.fish_indent,
-        -- diagnostics.eslint,
+        diagnostics.eslint,
         diagnostics.fish,
         -- diagnostics.tsc,
         -- code_actions.eslint,
