@@ -1,6 +1,6 @@
 return {
   'jose-elias-alvarez/null-ls.nvim',
-  lazy = false,
+  -- lazy = false,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = { "mason.nvim" },
   opts = function()

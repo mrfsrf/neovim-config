@@ -1,3 +1,6 @@
+-- To read:
+-- https://www.lazyvim.org/configuration/examples
+--
 -- Get the absolute path to the init.lua file
 local init_path = debug.getinfo(1, "S").source:sub(2)
 
@@ -29,19 +32,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Plugins ]]
 require("plugins")
-
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require("telescope").setup({
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-u>"] = false,
-        ["<C-d>"] = false,
-      },
-    },
-  },
-})
 
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")
@@ -127,8 +117,6 @@ local servers = {
   },
 }
 
--- Setup neovim lua configuration
-require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()

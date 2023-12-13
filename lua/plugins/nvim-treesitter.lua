@@ -5,7 +5,8 @@
 -- See `:help nvim-treesitter`
 return {
 "nvim-treesitter/nvim-treesitter",
-  lazy = true,
+  -- lazy = false,
+  event = "VeryLazy",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
