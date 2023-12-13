@@ -5,7 +5,7 @@ return {
     'akinsho/toggleterm.nvim', 
     version = "*", 
     config = true,
-    lazy = false
+    lazy = true
   }
   -- or
   -- {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}

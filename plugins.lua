@@ -3,7 +3,7 @@
 --  as they will be available in your neovim runtime.
 local opts = {
   defaults = {
-    lazy = false, -- true, -- should plugins be lazy-loaded?
+    lazy = true, -- true, -- should plugins be lazy-loaded?
     version = nil,
     -- default `cond` you can use to globally disable a lot of plugins
     -- when running inside vscode for example
@@ -23,7 +23,7 @@ require("lazy").setup({
   -- 'tpope/vim-sleuth',
 
   -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim", opts = {} },
+  { "folke/which-key.nvim", lazy = false, opts = {} },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.

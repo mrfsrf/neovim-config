@@ -1,7 +1,7 @@
 return { -- Theme inspired by Atom
   "ellisonleao/gruvbox.nvim",
   priority = 1000,
-  lazy = false, 
+  lazy = false,
   config = function()
     local gruvbox = require("gruvbox")
     gruvbox.setup({
