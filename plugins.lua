@@ -19,65 +19,11 @@ local opts = {
 }
 
 require("lazy").setup({
-  -- Git related plugins
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
-
   -- Detect tabstop and shiftwidth automatically
   -- 'tpope/vim-sleuth',
 
-  { -- Autocompletion
-    "hrsh7th/nvim-cmp",
-    lazy = false,
-    dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
-  },
-
-  -- Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
-  -- The plugin provides mappings to easily delete, change and add such surroundings in pairs
-  {
-    "tpope/vim-surround",
-  },
-
   -- Useful plugin to show you pending keybinds.
   { "folke/which-key.nvim", opts = {} },
-  { -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    -- https://github.com/lewis6991/gitsigns.nvim
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-      },
-    },
-  },
-
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
-
-  -- Fuzzy Finder (files, lsp, etc)
-  { "nvim-telescope/telescope.nvim", 
-    version = "*",
-    dependencies = 
-    { "nvim-lua/plenary.nvim" }
-  },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    lazy = false,
-    build = "make",
-    cond = function()
-      return vim.fn.executable("make") == 1
-    end,
-  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
