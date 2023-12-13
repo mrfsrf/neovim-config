@@ -7,6 +7,18 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
 -- vim.keymap.set("n", "<C-c>", "<Plug>(Copilot-n)", {})
 -- vim.keymap.set("x", "<C-c>", "<Plug>(Copilot-x)", {})
 
+-- Neo Tree
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+vim.keymap.set('n', '<leader>f', ':Neotree<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ft', ':Neotree toggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>fs', ':Neotree float git_status<CR>', { silent = true })
+
+-- nnoremap / :Neotree toggle current reveal_force_cwd<cr>
+-- nnoremap | :Neotree reveal<cr>
+-- nnoremap gd :Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
+-- nnoremap <leader>b :Neotree toggle show buffers right<cr>
+-- nnoremap <leader>s :Neotree float git_status<cr>
+
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
@@ -32,6 +44,3 @@ vim.keymap.set(
 	require("telescope.builtin").lsp_references,
 	{ desc = "[S]earch [LSP]lsp_document_symbols" }
 )
-
--- Harpon
-

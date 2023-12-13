@@ -65,3 +65,5 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 vim.keymap.set("n", "<leader>t", ":lua _G.toggle_terminal()<CR>", { noremap = true, silent = true })
 
+-- run python scripts
+vim.keymap.set("n", "<leader>!", ":!python3 %<CR>", { noremap = true, silent = true })

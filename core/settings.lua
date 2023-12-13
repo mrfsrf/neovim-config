@@ -22,6 +22,7 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -40,6 +41,7 @@ vim.o.undofile = true
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.incsearch = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
