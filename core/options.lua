@@ -4,9 +4,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- [[ Setting options ]]
 -- See `:help vim.o`
-
 -- Set highlight on search
 vim.o.hlsearch = false
 vim.opt.incsearch = true
@@ -58,7 +56,6 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 
 -- Additional settings
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })

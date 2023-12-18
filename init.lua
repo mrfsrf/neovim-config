@@ -10,7 +10,7 @@ local init_dir = init_path:match("(.*/)") or ""
 -- Add the init.lua directory to the Lua package path
 package.path = init_dir .. "?.lua;" .. package.path
 
-require("core.settings")
+require("core.options")
 require("core.keymaps")
 
 -- Install package manager
@@ -82,6 +82,8 @@ local on_attach = function(_, bufnr)
   end, { desc = "Format current buffer with LSP" })
 end
 
+vim.keymap.set("x", "<leader>fb", vim.lsp.buf.format, { desc = "Format code block" })
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -90,7 +92,7 @@ end
 local servers = {
   clangd = {},
   pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {} ,
   tsserver = {},
   lua_ls = {
     Lua = {
@@ -122,6 +124,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require("mason").setup()
+-- require('harpoon').setup()
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")

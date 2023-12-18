@@ -1,6 +1,6 @@
 return {
   "jay-babu/mason-null-ls.nvim",
-  lazy = false,
+  lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "williamboman/mason.nvim",

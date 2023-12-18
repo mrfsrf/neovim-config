@@ -1,6 +1,7 @@
--- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+-- Yank to end of line
+-- vim.keymap.set("n", "Y", "y$", { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -14,7 +15,7 @@ vim.keymap.set("n", "<leader>h", ":split<CR>", { noremap = true, silent = true }
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
 -- Fine cmd line
-vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 
 -- Close
 vim.keymap.set("n", "<Leader>Q", ":close<CR>", { noremap = true, silent = true })

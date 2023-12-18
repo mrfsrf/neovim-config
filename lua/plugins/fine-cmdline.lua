@@ -4,7 +4,7 @@ return {
   'VonHeikemen/fine-cmdline.nvim',
   lazy = false,
   -- event = "InsertEnter",
-  dependencies = {'MunifTanjim/nui.nvim' },
+  dependencies = { 'MunifTanjim/nui.nvim' },
   config = function()
   end
 }

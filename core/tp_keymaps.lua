@@ -1,4 +1,3 @@
-
 -- TP Plugins
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { silent = true })
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
@@ -17,7 +16,6 @@ vim.keymap.set('n', '<leader>fs', ':Neotree float git_status<CR>', { silent = tr
 -- nnoremap | :Neotree reveal<cr>
 -- nnoremap gd :Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
 -- nnoremap <leader>b :Neotree toggle show buffers right<cr>
--- nnoremap <leader>s :Neotree float git_status<cr>
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
@@ -37,6 +35,7 @@ vim.keymap.set("n", "<leader>rf", require("telescope.builtin").oldfiles, { desc 
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+
 -- builtin.lsp_references({opts})
 vim.keymap.set(
 	"n",
@@ -44,3 +43,17 @@ vim.keymap.set(
 	require("telescope.builtin").lsp_references,
 	{ desc = "[S]earch [LSP]lsp_document_symbols" }
 )
+
+-- Harpoon
+local harpoon = require("harpoon")
+---@diagnostic disable-next-line: missing-parameter
+harpoon:setup()
+local function map(lhs, rhs, opts)
+  vim.keymap.set("n", lhs, rhs, opts or {})
+end
+map("<leader>ha", function() harpoon:list():append() end, { desc = "Mark file with harpoon"})
+map("<leader>hn", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon marks" })
+map("<c-h><c-h>", function() harpoon:list():select(1) end, {})
+map("<c-h><c-j>", function() harpoon:list():select(2) end, {})
+map("<c-h><c-k>", function() harpoon:list():select(3) end, {})
+map("<c-h><c-l>", function() harpoon:list():select(4) end, {})
