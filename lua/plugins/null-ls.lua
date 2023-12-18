@@ -16,7 +16,7 @@ return {
             async = true,
             timeout = 2000,
           })
-        end, { noremap = true, silent = true, buffer = bufnr })
+        end, { noremap = true, silent = true, buffer = bufnr, desc = "Format document" })
       end,
       sources = {
         formatting.stylua,
@@ -28,7 +28,7 @@ return {
         diagnostics.eslint,
         diagnostics.fish,
         -- diagnostics.tsc,
-        -- code_actions.eslint,
+        code_actions.eslint,
         code_actions.gitsigns,
         diagnostics.mypy,
         diagnostics.pylint,

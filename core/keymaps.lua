@@ -14,6 +14,7 @@ vim.keymap.set("n", "<leader>h", ":split<CR>", { noremap = true, silent = true }
 -- Navigate trough open buffers
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
+
 -- Fine cmd line
 vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 
@@ -26,6 +27,9 @@ vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
 -- Move line up/down
 vim.keymap.set("n", "<A-Up>", ":m-2<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-Down>", ":m+<CR>", { noremap = true, silent = true })
+
+--  New tab
+vim.keymap.set("n", "te", ":tabedit<CR>", { noremap = true, silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

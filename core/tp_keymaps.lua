@@ -44,13 +44,15 @@ vim.keymap.set(
 	{ desc = "[S]earch [LSP]lsp_document_symbols" }
 )
 
+vim.keymap.set("x", "<leader>fb", vim.lsp.buf.format, { desc = "Format code block" })
+
 -- Harpoon
 local harpoon = require("harpoon")
 ---@diagnostic disable-next-line: missing-parameter
 harpoon:setup()
 vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "Mark file with harpoon"})
 vim.keymap.set("n", "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon marks" })
-vim.keymap.set("n", "<c-h><c-h>", function() harpoon:list():select(1) end, {})
-vim.keymap.set("n", "<c-h><c-j>", function() harpoon:list():select(2) end, {})
-vim.keymap.set("n", "<c-h><c-k>", function() harpoon:list():select(3) end, {})
-vim.keymap.set("n", "<c-h><c-l>", function() harpoon:list():select(4) end, {})
+vim.keymap.set("n", "<C-r>", function() harpoon:list():select(1) end, {})
+vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end, {})
+vim.keymap.set("n", "<C-y>", function() harpoon:list():select(3) end, {})
+-- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(4) end, {})
