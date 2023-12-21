@@ -1,7 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  opts = {},
+  -- opts = {},
   config = function()
     require("lualine").setup({
       options = {
