@@ -7,6 +7,9 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Delete line without copy
+vim.keymap.set("n", "<leader>d", "\"_d$", { noremap = true, silent = true })
+
 -- Split panes keymaps
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>h", ":split<CR>", { noremap = true, silent = true })
