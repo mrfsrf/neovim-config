@@ -8,9 +8,9 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
 
 -- Neo Tree
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-vim.keymap.set('n', '<leader>f', ':Neotree<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ft', ':Neotree toggle<CR>', { silent = true })
-vim.keymap.set('n', '<leader>fs', ':Neotree float git_status<CR>', { silent = true })
+vim.keymap.set("n", "<leader>f", ":Neotree<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ft", ":Neotree toggle<CR>", { silent = true })
+vim.keymap.set("n", "<leader>fs", ":Neotree float git_status<CR>", { silent = true })
 
 -- nnoremap / :Neotree toggle current reveal_force_cwd<cr>
 -- nnoremap | :Neotree reveal<cr>
@@ -35,6 +35,25 @@ vim.keymap.set("n", "<leader>rf", require("telescope.builtin").oldfiles, { desc 
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>sk", require("telescope.builtin").keymaps, { desc = "[S]earch [K]eymaps" })
+
+vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "[G]oto [D]efinition" })
+vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "[G]oto [R]eferences" })
+vim.keymap.set("n", "gI", require("telescope.builtin").lsp_implementations, { desc = "[G]oto [I]mplementation" })
+
+-- Jump to the type of the word under your cursor.
+--  Useful when you're not sure what type a variable is and you want to see
+--  the definition of its *type*, not where it was *defined*.
+-- map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+
+-- It's also possible to pass additional configuration options.
+--  See `:help telescope.builtin.live_grep()` for information about particular keys
+vim.keymap.set("n", "<leader>s/", function()
+	require("telescope.builtin").live_grep({
+		grep_open_files = true,
+		prompt_title = "Live Grep in Open Files",
+	})
+end, { desc = "[S]earch [/] in Open Files" })
 
 -- builtin.lsp_references({opts})
 vim.keymap.set(
@@ -50,9 +69,19 @@ vim.keymap.set("x", "<leader>fb", vim.lsp.buf.format, { desc = "Format code bloc
 local harpoon = require("harpoon")
 ---@diagnostic disable-next-line: missing-parameter
 harpoon:setup()
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "Mark file with harpoon"})
-vim.keymap.set("n", "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon marks" })
-vim.keymap.set("n", "<C-r>", function() harpoon:list():select(1) end, {})
-vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end, {})
-vim.keymap.set("n", "<C-y>", function() harpoon:list():select(3) end, {})
+vim.keymap.set("n", "<leader>ha", function()
+	harpoon:list():add()
+end, { desc = "Mark file with harpoon" })
+vim.keymap.set("n", "<leader>hm", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Show harpoon marks" })
+vim.keymap.set("n", "<C-r>", function()
+	harpoon:list():select(1)
+end, {})
+vim.keymap.set("n", "<C-t>", function()
+	harpoon:list():select(2)
+end, {})
+vim.keymap.set("n", "<C-y>", function()
+	harpoon:list():select(3)
+end, {})
 -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(4) end, {})
