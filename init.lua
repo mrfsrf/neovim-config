@@ -91,7 +91,7 @@ local servers = {
 	clangd = {},
 	pyright = {},
 	rust_analyzer = {},
-	tsserver = {},
+	ts_ls = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -126,16 +126,14 @@ require("mason").setup()
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 
+for server_name, server_settings in pairs(servers) do
+	vim.lsp.config(server_name, {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = server_settings,
+	})
+end
+
 mason_lspconfig.setup({
 	ensure_installed = vim.tbl_keys(servers),
-})
-
-mason_lspconfig.setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-		})
-	end,
 })
