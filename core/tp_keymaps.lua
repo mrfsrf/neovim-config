@@ -50,7 +50,7 @@ vim.keymap.set("x", "<leader>fb", vim.lsp.buf.format, { desc = "Format code bloc
 local harpoon = require("harpoon")
 ---@diagnostic disable-next-line: missing-parameter
 harpoon:setup()
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "Mark file with harpoon"})
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Mark file with harpoon"})
 vim.keymap.set("n", "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon marks" })
 vim.keymap.set("n", "<C-r>", function() harpoon:list():select(1) end, {})
 vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end, {})
